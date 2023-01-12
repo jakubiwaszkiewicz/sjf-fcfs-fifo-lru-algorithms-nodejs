@@ -1,13 +1,16 @@
-fs = require("fs")
-const data = JSON.parse(fs.readFileSync("../data/data.txt", "utf-8"))
-const { findTurnAroundTime } = require('./findTurnAroundTime.js')
-const { findWaitingTime } = require('./findWaitingTime.js')
-
-let dataTotalTurnAroundTimes = 0, dataTotalWaitingTime = 0
-let countOfSeries = data.length
 
 
-function FCSOperations (dataTotalTurnAroundTimes, dataTotalWaitingTime, countOfSeries) {
+function FCSOperations () {
+
+    let fs = require("fs")
+    const data = JSON.parse(fs.readFileSync("../data/data.txt", "utf-8"))
+    const { findTurnAroundTime } = require('./findTurnAroundTime.js')
+    const { findWaitingTime } = require('./findWaitingTime.js')
+
+    let dataTotalTurnAroundTimes = 0, dataTotalWaitingTime = 0
+    let countOfSeries = data.length
+
+
     for (let i = 0; i < countOfSeries; i++) {
 
         const series = data[i]
@@ -41,8 +44,12 @@ function FCSOperations (dataTotalTurnAroundTimes, dataTotalWaitingTime, countOfS
         dataTotalWaitingTime += seriesAverageWaitingTime
         dataTotalTurnAroundTimes += seriesAverageTurnAroundTime
     }
-    console.log(`Average waiting time = ${dataTotalWaitingTime / countOfSeries}`);
-    console.log(`Average turn around time = ${dataTotalTurnAroundTimes / countOfSeries}`);
+    let dataAverageWaitingTime = dataTotalWaitingTime / countOfSeries
+    let dataAverageTurnAroundTime = dataTotalTurnAroundTimes / countOfSeries
+
+
+    console.log(`Average waiting time = ${dataAverageWaitingTime.toFixed(2)}`);
+    console.log(`Average turn around time = ${dataAverageTurnAroundTime.toFixed(2)}`);
 }
 
-FCSOperations (dataTotalTurnAroundTimes, dataTotalWaitingTime, countOfSeries)
+FCSOperations ()

@@ -1,11 +1,14 @@
-fs = require("fs")
-const data = JSON.parse(fs.readFileSync("../data/data.txt", "utf-8"))
 
-const countOfSeries = data.length
-
-
-let dataTotalTurnAroundTimes = 0, dataTotalWaitingTime = 0
 function SJFOperations () {
+
+    let fs = require("fs")
+    const data = JSON.parse(fs.readFileSync("../data/data.txt", "utf-8"))
+
+    const countOfSeries = data.length
+
+
+    let dataTotalTurnAroundTimes = 0, dataTotalWaitingTime = 0
+
     for (let k = 0; k < countOfSeries; k++) {
 
         let series = data[k]
@@ -53,8 +56,11 @@ function SJFOperations () {
         dataTotalTurnAroundTimes += totalTurnAroundTime/countOfProcesses
         dataTotalWaitingTime += totalWaitingTime/countOfProcesses
     }
-    console.log(`Average waiting time = ${dataTotalWaitingTime / countOfSeries}`);
-    console.log(`Average turn around time = ${dataTotalTurnAroundTimes / countOfSeries}`);
+    let dataAverageWaitingTime = dataTotalWaitingTime / countOfSeries
+    let dataAverageTurnAroundTime = dataTotalTurnAroundTimes / countOfSeries
+
+    console.log(`Average waiting time = ${dataAverageWaitingTime.toFixed(2)}`);
+    console.log(`Average turn around time = ${dataAverageWaitingTime.toFixed(2)}`);
 }
 
 SJFOperations ()
