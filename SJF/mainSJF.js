@@ -60,7 +60,7 @@ function SJFOperations () {
     let dataAverageTurnAroundTime = dataTotalTurnAroundTimes / countOfSeries
 
     console.log(`Average waiting time = ${dataAverageWaitingTime.toFixed(2)}`);
-    console.log(`Average turn around time = ${dataAverageWaitingTime.toFixed(2)}`);
+    console.log(`Average turn around time = ${dataAverageTurnAroundTime.toFixed(2)}`);
 }
 
 SJFOperations ()

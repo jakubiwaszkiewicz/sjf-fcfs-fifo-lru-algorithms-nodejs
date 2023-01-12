@@ -5,8 +5,8 @@ for (let i = 1; i <= 100; i++) {
 
         let element = []
         element.push(j)
-        element.push(Math.floor(Math.random() * 20 + 1)) // second when task arrived
-        element.push(Math.floor(Math.random() * 200)) // second when task arrived
+        element.push(Math.floor(Math.random() * 20 + 1)) // seconds how long process will be executed
+        element.push(Math.floor(Math.random() * 200)) // second when process arrived
         unsortedSeries.push(element)
     }
     data.push(unsortedSeries)
