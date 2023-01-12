@@ -12,7 +12,6 @@ arrivalTime.sort((a, b) => a - b)
 let burstTime = series.map((element) => element[2])
 burstTime.join()
 burstTime.sort((a, b) => a - b)
-console.log(arrivalTime, burstTime, countOfProcesses)
 
 function SJFOperations (arrivalTime, burstTime, countOfProcesses) {
 
@@ -46,8 +45,8 @@ function SJFOperations (arrivalTime, burstTime, countOfProcesses) {
     let totalWaitingTime = 0
     turnAroundTime.map((turnAroundTime) => {totalTurnAroundTime += turnAroundTime})
     waitingTime.map((waitingTime) => {totalWaitingTime += waitingTime})
-    console.log(`Average turn around time = ${totalTurnAroundTime/countOfProcesses}`)
     console.log(`Average waiting = ${totalWaitingTime/countOfProcesses}`)
+    console.log(`Average turn around time = ${totalTurnAroundTime/countOfProcesses}`)
 }
 
 SJFOperations (arrivalTime, burstTime, countOfProcesses)

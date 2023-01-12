@@ -31,8 +31,8 @@ function FCSOperations (dataTotalTurnAroundTimes, dataTotalWaitingTime, countOfS
                 findTurnAroundTime(processes, countOfProcesses, burstTime, waitTime, turnAroundTime);
 
                 for (let i = 0; i < countOfProcesses; i++) {
-                    seriesTotalWaitingTime = seriesTotalWaitingTime + waitTime[i];
-                    seriesTotalTurnAroundTime = seriesTotalTurnAroundTime + turnAroundTime[i];
+                    seriesTotalWaitingTime += waitTime[i];
+                    seriesTotalTurnAroundTime += turnAroundTime[i];
                 }
                 return [seriesTotalWaitingTime / countOfProcesses, seriesTotalTurnAroundTime / countOfProcesses]
 
