@@ -1,9 +1,7 @@
-
-
 function FCSOperations () {
 
     let fs = require("fs")
-    const data = JSON.parse(fs.readFileSync("../data/data.txt", "utf-8"))
+    const data = JSON.parse(fs.readFileSync("../data/dataProc.txt", "utf-8"))
     const { findTurnAroundTime } = require('./findTurnAroundTime.js')
     const { findWaitingTime } = require('./findWaitingTime.js')
 
@@ -17,13 +15,11 @@ function FCSOperations () {
         const processes = series.map((element) => element[0])
         const countOfProcesses = processes.length;
 
-        const arrivalTime = series.map((element) => element[1])
+        const burstTime = series.map((element) => element[1])
+
+        const arrivalTime = series.map((element) => element[2])
         arrivalTime.join()
         arrivalTime.sort((a, b) => a - b)
-
-        const burstTime = series.map((element) => element[2])
-        burstTime.join()
-        burstTime.sort((a, b) => a - b)
 
         let seriesTotalWaitingTime = 0, seriesTotalTurnAroundTime = 0;
             function findAverageTime(processes, countOfProcesses, burstTime, arrivalTime) {
