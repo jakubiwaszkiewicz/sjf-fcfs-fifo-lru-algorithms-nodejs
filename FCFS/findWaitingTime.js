@@ -1,4 +1,4 @@
-function findWaitingTime(processes, countOfProcesses, burstTime, waitTime, arrivalTime) {
+function findWaitingTime(countOfProcesses, burstTime, waitTime, arrivalTime) {
     let serviceTime = Array.from({length: countOfProcesses}, () => 0);
     serviceTime[0] = arrivalTime[0];
     waitTime[0] = 0;

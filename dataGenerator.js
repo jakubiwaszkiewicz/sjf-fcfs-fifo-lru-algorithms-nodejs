@@ -1,4 +1,4 @@
-const dataGeneratorForProcAlg = () => {
+const dataGeneratorProcAlg = () => {
     let data = []
     for (let i = 1; i <= 100; i++) {
         let unsortedSeries = []
@@ -18,12 +18,22 @@ const dataGeneratorForProcAlg = () => {
     }
 }
 
-const dataGeneratorForPageAlg = () => {
-
+const dataGeneratorPageAlg = () => {
+    const page = 20
+    let data = []
+    for (let i = 0; i < 100; i++) {
+        let series = []
+        for (let i = 0; i < 100; i++) {
+            let singleData = Math.floor(Math.random() * page)
+            series.push(singleData)
+        }
+        data.push(series)
+    }
+    const fs = require('fs')
+    fs.writeFileSync('./data/dataPage.txt', JSON.stringify(data))
+    console.log(JSON.parse(fs.readFileSync('./data/dataPage.txt')))
 }
-
-
-dataGeneratorForPageAlg()
-dataGeneratorForProcAlg()
+dataGeneratorPageAlg()
+dataGeneratorPageAlg()
 
 // console.log(JSON.parse(fs.readFileSync("./data/data.txt", "utf8")));
