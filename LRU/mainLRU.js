@@ -12,30 +12,30 @@ function LRUOperations() {
 
         for (let j = 0; j < data.length; j++) {
             let pages = data[j];
-            let setCurrentPages = new Set();
+            let memory = new Set();
             let indexes = new Map();
             let pageFaults = 0;
 
             for (let k = 0; k < pages.length; k++) {
-                if (setCurrentPages.size < capacity) {
-                    if (!setCurrentPages.has(pages[k])) {
-                        setCurrentPages.add(pages[k]);
+                if (memory.size < capacity) {
+                    if (!memory.has(pages[k])) {
+                        memory.add(pages[k]);
                         pageFaults++;
                     }
                     indexes.set(pages[k], k);
                 } else {
-                    if (!setCurrentPages.has(pages[k])) {
+                    if (!memory.has(pages[k])) {
                         let max = Number.MAX_VALUE, min = Number.MIN_VALUE;
-                        for (let itr of setCurrentPages.values()) {
+                        for (let itr of memory.values()) {
                             let temp = itr;
                             if (indexes.get(temp) < max) {
                                 max = indexes.get(temp);
                                 min = temp;
                             }
                         }
-                        setCurrentPages.delete(min);
+                        memory.delete(min);
                         indexes.delete(min);
-                        setCurrentPages.add(pages[k]);
+                        memory.add(pages[k]);
                         pageFaults++;
                     }
                     indexes.set(pages[k], k);
