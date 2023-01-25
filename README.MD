@@ -8,4 +8,4 @@ To lunch a program all you have to do is
 If you want to randomize the data or change the parameters of the data, and you have downloaded the `node.js` already:
 1. Open the `dataGenerator.js`
 2. Change the parameters in `Math.floor()` function
-3. Compile the file
+3. Compile the file.
