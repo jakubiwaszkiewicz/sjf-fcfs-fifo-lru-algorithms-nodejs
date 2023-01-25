@@ -1,7 +1,8 @@
-const fs = require('fs')
-const data = JSON.parse(fs.readFileSync("../data/dataPage.txt"))
-const capacities = [5, 10, 15]
-function LRUOperations(capacities, data) {
+function LRUOperations() {
+    // Importowanie modułu node.js'a 'fs' potrzebnych do operacji na plikach
+    const fs = require('fs')
+    const data = JSON.parse(fs.readFileSync("../data/dataPage.txt"))
+    const capacities = [5, 10, 15]
 
     let results = []
 
@@ -49,4 +50,4 @@ function LRUOperations(capacities, data) {
     console.log(`Average page faults for capacity equal ${capacities[1]}: ${results[1]}`)
     console.log(`Average page faults for capacity equal ${capacities[2]}: ${results[2]}`)
 }
-LRUOperations(capacities, data)
+LRUOperations()

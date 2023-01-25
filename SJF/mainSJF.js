@@ -1,4 +1,3 @@
-
 function SJFOperations () {
     // Importowanie modułu node.js'a 'fs' potrzebnych do operacji na plikach
     let fs = require("fs")
