@@ -17,7 +17,6 @@ function SJFOperations () {
         arrivalTime.join()
         arrivalTime.sort((a, b) => a - b)
 
-        let temp, value = 0
         let completionTime = Array.from({length: countOfProcesses}, () => 0)
         let turnAroundTime = Array.from({length: countOfProcesses}, () => 0)
         let waitingTime = Array.from({length: countOfProcesses}, () => 0)
@@ -25,16 +24,14 @@ function SJFOperations () {
         turnAroundTime[0] = completionTime[0] - arrivalTime[0];
         waitingTime[0] = turnAroundTime[0] - burstTime[0];
         for (let i = 1; i < countOfProcesses; ++i) {
-            temp = completionTime[i-1];
             let low = burstTime[i];
             for (let j = i; j < countOfProcesses; j++) {
-                if (temp >= arrivalTime[j] && low >= burstTime[j]) {
+                if (completionTime[i-1] >= arrivalTime[j] && low >= burstTime[j]) {
                     low = burstTime[j];
-                    value = j;
                 }
-                completionTime[value] = temp + burstTime[value];
-                turnAroundTime[value] = completionTime[value] - arrivalTime[value];
-                waitingTime[value] = turnAroundTime[value] - burstTime[value];
+                completionTime[j] = completionTime[i-1] + burstTime[j];
+                turnAroundTime[j] = completionTime[j] - arrivalTime[j];
+                waitingTime[j] = turnAroundTime[j] - burstTime[j];
             }
         }
         let totalTurnAroundTime = 0

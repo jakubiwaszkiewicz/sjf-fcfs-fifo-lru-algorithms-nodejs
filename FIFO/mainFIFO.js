@@ -23,9 +23,8 @@ function FIFOOperations() {
                     }
                 } else {
                     if (!memory.has(pages[i])) {
-                        let val = indexes[0];
                         indexes.shift();
-                        memory.delete(val);
+                        memory.delete(indexes[0]);
                         memory.add(pages[i]);
                         indexes.push(pages[i]);
                         pageFaults++;
